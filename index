@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ស្ថានភាពចំណតរថយន្ត</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-table-display">
+        <div class="header">
+            <img src="logo RPITSSVR.png" alt="Logo" class="logo">
+            <div class="header-text">
+                <h3>វិទ្យាស្ថានពហុបច្ចេកទេសភូមិភាគតេជោសែនស្វាយរៀង</h3>
+                <h3>ដេប៉ាតេម៉ង់ អគ្គិសនី</h3>
+            </div>
+        </div>
+        <div class="colorstatus-text">
+            <h5>ចំណតមិនប្រើ</h5><span class="parking-status yellow"></span>
+            <h5>ចំណតមានរថយន្ត</h5><span class="parking-status red"></span>
+            <h5>ចំណតទំនេរ</h5><span class="parking-status green"></span>
+        </div>
+        <h1>ស្ថានភាពចំណតរថយន្ត</h1>
+    <div class="floor">
+        <h2>ស្ថានភាពជាន់ផ្ទាល់ដី</h2>
+        <div class="parking-box-setting">
+            <div id="A3" class="parkingbox-style"data-spot="P1">P1</div>
+            <div id="A4" class="parkingbox-style"data-spot="P2">P2</div>
+            <div id="A5" class="parkingbox-style"data-spot="P3">P3</div>
+            <div id="A6" class="parkingbox-style"data-spot="P4">P4</div>
+        </div> 
+    </div>
+        <div class="floor">
+        <h2>ស្ថានភាពជាន់ទី១</h2>
+            <div class="parking-box-setting">
+            <div id="A7" class="parkingbox-style"data-spot="P5">P5</div>
+            <div id="A8" class="parkingbox-style"data-spot="P6">P6</div>
+            <div id="" class="parkingbox-notuse"data-spot="P7">មិនប្រើ</div>
+            <div id="" class="parkingbox-notuse"data-spot="P8">មិនប្រើ</div>
+            </div>
+        </div>
+        <div class="status-text">
+            <p>ចំនួនចំណតសរុប: <span id="totalSpots">0</span>,
+                ចំនួនចំណតទំនេរ: <span id="availableSpots">0</span>,
+                ចំនួនចំណតមានរថយន្ត: <span id="occupiedSpots">0</span>,</p>
+        </div>
+
+            <div class="footer-text">
+                <h4>សូមស្វាគមន៍មកកាន់ ប្រព័ន្ធគ្រប់គ្រងចំណតរថយន្តឆ្លាតវៃរបស់វិទ្យាស្ថានពហុបច្ចេកទេសភូមិភាគតេជោសែនស្វាយរៀង</h4>
+            </div>
+    </div>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+    <script>
+        // -- ដាក់កូដ Firebase Config របស់អ្នកនៅទីនេះ --
+        const firebaseConfig = {
+            apiKey: "AIzaSyCWxwvq5Ye495jr3D9Dnf5QODrFy0uvF8E",
+            authDomain: "slot-logo-16102025.firebaseapp.com",
+            databaseURL: "https://slot-logo-16102025-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "slot-logo-16102025",
+            storageBucket: "slot-logo-16102025.firebasestorage.app",
+            messagingSenderId: "618362914173",
+            appId: "1:618362914173:web:75ea95e194430bf60a3814"
+        };
+        // ---------------------------------------------
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // យោងទៅកាន់ទីតាំងទិន្នន័យចំណត
+        const parkingRef = database.ref('parking/slot');
+
+        //  lắng ngheការផ្លាស់ប្តូរទិន្នន័យ
+        parkingRef.on('value', (snapshot) => {
+            const spots = snapshot.val();
+            console.log("ទិន្នន័យបានធ្វើបច្ចុប្បន្នភាព:", spots);
+
+            // ធ្វើបច្ចុប្បន្នភាពสีของแต่ละช่อง
+            for (const spotId in spots) {
+                const element = document.getElementById(spotId);
+                if (element) {
+                    const status = spots[spotId];
+                    if (status === 'free') {
+                        element.className = 'parkingbox-style free';
+                    } else {
+                        element.className = 'parkingbox-style full';
+                    }
+                }
+            }
+        });
+    </script>
+     <script src="script.js"></script> <!-- បន្ថែម script នេះនៅខាងក្រោម body -->
+</body>
+</html>
