@@ -1,0 +1,178 @@
+        /*កំណត់ប្លង់ទាំងមួល*/
+body{
+            font-family: 'Kantumruy Pro', sans-serif;
+            background-color: #f0f2f5; /* ពណ៌ផ្ទៃខាងក្រោយស្រាល */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0px;
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 100vh;
+            
+        }
+        /*កំណត់ ប្រអប់ដែលផ្ទុកធាតុទាំងមូល*/
+        .main-table-display {
+            background-color: rgb(200, 219, 212);
+            text-align:center;
+            width: 100%;
+            padding: 10px 10px;
+            border-radius: 12px;
+        }
+        .header {
+            display: flex;
+            align-items: center; /* តម្រឹម Logo និងអក្សរឲ្យនៅជួរត្រង់គ្នា */
+            gap: 10px; /* គម្លាតរវាង Logo និងអក្សរ */
+            margin-bottom: 5px;
+
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* ធ្វើឲ្យរូប Logo មូល */
+            object-fit: cover;
+            background-color: #c4c4c4; /* ពណ៌សម្រាប់ Logo បណ្ដោះអាសន្ន */
+        }
+        .header-text h3 {
+            margin: 5px;
+            color: #0400ff;
+            font-weight: 700;
+            text-align: left;
+        }
+        .footer-text h4 {
+            margin-top: 10px;
+            font-weight: 700;
+            color: rgb(0, 0, 0);
+            text-align:center;
+            border-top: 2px solid black;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .status-text {
+            color: #0400ff;
+            border-radius: 8px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: row;
+        }
+
+        /*កំណត់ Hading Style*/
+        h1 {
+            color: #000000;
+            margin-bottom: 5px;
+            font-size: 24px;
+            margin-top: 5px
+        }
+        h2 {
+            margin-bottom: 1px;
+            margin-top: 10px;
+            font-size: 20px;
+            padding-bottom: 10px;
+            color: #000000;
+        }
+        h5 {
+            margin-bottom: 0%;
+            margin-top: 0%;
+            font-size: 20px;
+            padding-bottom: 0%;
+            color: #000000;
+        }
+        /*ចែក ជួរនិងទំហំប្រអប់សម្រាប់ចំណត់នីមួយៗ*/
+        .parking-box-setting {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* បង្កើត 4 ជួរដេកស្មើៗគ្នា */
+            gap: 15px; /* គម្លាតរវាងចំណត */
+        }
+        .colorstatus-text {
+            margin: 5px;
+            margin-bottom: 5px;
+            display:flex;
+            flex-direction: row-reverse;
+            margin: 0%;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        /*កំណត់ រចនាបទសម្រាប់ចំណត់នីមួយៗ*/
+        .parkingbox-style{
+            height: 150px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            min-height: 80px; /* ធានាថាមានកម្ពស់គ្រប់គ្រាន់ */
+            cursor: pointer; /* បង្ហាញថាអាចចុចបាន */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .parkingbox-notuse{
+            height: 150px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            min-height: 80px; /* ធានាថាមានកម្ពស់គ្រប់គ្រាន់ */
+            cursor: pointer; /* បង្ហាញថាអាចចុចបាន */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: #e5ff00;
+        }
+        .parking-status{
+            height: 20px;
+            width: 20px;
+            display: flex;
+            border-radius: 5px;
+            margin-left: 20px;
+            margin-right: 5px;
+        }
+        .green{
+            background-color: #28a745;
+        }
+        .red{
+            background-color: #dc3545;
+        }
+        .yellow{
+            background-color: #e5ff00;
+        }
+        /*កំណត់ រចនាបទសម្រាប់ចំណត់ទំនេរ*/
+        .parkingbox-style.free{
+            background-color: #28a745; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        /*កំណត់ រចនាបទសម្រាប់ចំណត់ពេញ*/
+        .parkingbox-style.full{
+            background-color: #dc3545;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        /*ស្ទាយបាត់មួយភ្លេតពេលដាក់ Mouse លើប្រអប់*/
+        .parkingbox-style:hover{
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .floor {
+            margin-bottom: 2px;
+        }
+        
+        .floor:last-child {
+            margin-bottom: 2px;
+        }
+        /* សម្រាប់អេក្រង់ទូរស័ព្ទតូច */
+        @media (max-width: 480px) {
+            .parking-box-setting {
+                grid-template-columns: repeat(2, 1fr); /* បង្ហាញ 2 ចំណតក្នុងមួយជួរ */
+            }
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+        }
